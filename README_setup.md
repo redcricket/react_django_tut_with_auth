@@ -236,7 +236,7 @@ So in the terminal execute:
 
 You should QA at this point by starting the django server like so:
 
-```python
+```
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py runserver
 ```
 
@@ -246,3 +246,136 @@ You should see this:
 
 ![alt text](react_django_tut/docs/imgs/login.png)
 
+## Install Django Rest Auth
+
+Documentation for installing django-rest-auth here: https://django-rest-auth.readthedocs.io/en/latest/installation.html
+
+So in the terminal execute:
+
+```bash
+pip install django-rest-auth
+```
+
+We also need to change the `INSTALLED_APPS` in the `settings.py` file.
+
+So change ...
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',
+    # The following apps are required:
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # ... include the providers you want to enable:
+    'allauth.socialaccount.providers.github',
+]
+```
+
+... to ...
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',
+    # added as per django-rest-auth docs.
+    # https://django-rest-auth.readthedocs.io/en/latest/installation.html
+    'rest_framework.authtoken',
+    # The following apps are required:
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # ... include the providers you want to enable:
+    'allauth.socialaccount.providers.github',
+    # added as per django-rest-auth docs.
+    # https://django-rest-auth.readthedocs.io/en/latest/installation.html
+    'rest_auth'
+]
+```
+
+The django-rest-auth documentation also says we need to update the project's urls.py file.
+
+So in the urls.py file change ...
+
+```python
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    url(r'^accounts/', include('allauth.urls')),
+]
+```
+
+... to ...
+
+```python
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    url(r'^accounts/', include('allauth.urls')),
+    # added as per django-rest-auth docs.
+    # https://django-rest-auth.readthedocs.io/en/latest/installation.html
+    url(r'^rest-auth/', include('rest_auth.urls'))
+]
+```
+
+Then the documenation says we need to execute in the terminal this command:
+
+```bash
+python manage.py migrate
+```
+
+## Enabling Github social authentication 
+
+The documentation for this is here: 
+
+https://django-rest-auth.readthedocs.io/en/latest/installation.html#social-authentication-optional
+https://django-rest-auth.readthedocs.io/en/latest/installation.html#github
+
+The documentation is not very clear.  It states:
+
+> Add Social Application in django admin panel
+
+So we need to be able to use the django admin panel.
+Before we can do that we need to create a super user.
+So in the terminal execute:
+
+```bash
+(venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py createsuperuser
+```
+
+Then do ...
+
+also see:
+
+https://developer.github.com/v3/guides/basics-of-authentication/
+https://developer.github.com/v3/guides/basics-of-authentication/#registering-your-app
+
+On github we do this: 
+
+https://github.com/settings/developers
+click on 'Register a new application' button
+
+(see screen shots)
+
+Once we register our app with git hub we get this web page: https://github.com/settings/applications/1171918
+
+Now in the admin panel nagivate to Admin > Sites panel to change `example.com` to `localhost`.
+
+![alt text](react_django_tut/docs/imgs/admin_sites_change_example.com_to_localhost.png)
+
+Also in the Home › Social Accounts › Social applications:
+
+Now back in our app's admin panel we fill out: http://localhost:8000/admin/socialaccount/socialapp/add/
+create a social application called `django_react_tut_oauth_app`.  
+![alt text](react_django_tut/docs/imgs/admin_panel_create_social_application.png)
