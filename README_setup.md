@@ -400,3 +400,10 @@ Click the 'Authorize redcrick' button and you end up here:
 
 TODO: figure out how to fix the 404 error.
 
+You also check this url: localhost:8000/rest-auth/user/
+
+You should see something like:
+
+![alt text](react_django_tut/docs/imgs/rest-auth_user.png)
+
+
