@@ -1,8 +1,16 @@
 # React Django Tutorial
 
+This tutorial assumes you are familiar with Python, Django and Django Rest Framework.
+If not, there's are plenty of documentation online.
+
+ * https://www.djangoproject.com/start/
+ * https://www.django-rest-framework.org/
+ 
+ The tutorials are great.
+ 
 # Start Here
 
-I developing on a Windows 10 system.  I will be using PyCharm.
+I am developing on a Windows 10 system.  I will be using PyCharm.
 
 ## Install Django
 
@@ -10,13 +18,13 @@ First we need to set up Django.  That is well documented here: https://www.djang
 Here's what I did. Opened a terminal from PyCharm and executed:
 
 
-```bash
+```
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut>pip install Django
 ```
 
 Then I opened a Python Console in PyCharm and executed:
 
-```python
+```
 import django
 print(django.get_version())
 2.2.7
@@ -25,7 +33,7 @@ print(django.get_version())
 ## Create a Django Project
 
 At this point it is a good idea to create a Django project.  This is because we are going to install Django Rest
-Framework (DRF), django-allauth and django-rest-auth and these packaages require some changes to our Django project's
+Framework (DRF), django-allauth and django-rest-auth and these packages require some changes to our Django project's
 settings.py file.
 
 So in the PyCharm terminal execute:
@@ -34,8 +42,11 @@ So in the PyCharm terminal execute:
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut>django-admin startproject react_django_tut
 ```
 
-You can QA at this point by executing:
+The above creates a Django project called `react_django_tut`.
 
+### QA Django Project Creation 
+
+You can QA at this point by executing:
 ```
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut>cd react_django_tut
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py runserver
@@ -94,6 +105,13 @@ INSTALLED_APPS = [
 ]
 ```
 
+The line ...
+
+```
+    'rest_framework',
+```
+
+... was added.
 
 ## Install Django AllAuth
 
@@ -101,7 +119,7 @@ Documentation is here: https://django-allauth.readthedocs.io/en/latest/
 
 In my terminal I execute:
 
-```python
+```
 pip install django-allauth
 ```
 
@@ -129,7 +147,7 @@ TEMPLATES = [
 
 ... to this ...
 
-```
+```python
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -148,6 +166,15 @@ TEMPLATES = [
     },
 ]
 ```
+
+The lines ...
+
+```
+                # `allauth` needs this from django
+                'django.template.context_processors.request',
+```
+
+... were added.
 
 And then add these lines:
 
@@ -196,6 +223,20 @@ INSTALLED_APPS = [
 ]
 ```
 
+The lines ...
+
+```
+    # The following apps are required:
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # ... include the providers you want to enable:
+    'allauth.socialaccount.providers.github',
+```
+
+... were added.
+
 Also add this line:
 
 ```python
@@ -206,20 +247,20 @@ We also need to update our project's url.py file
 
 Change ...
 
-```python
+```
 from django.urls import path
 ```
 
 ... to ...
 
-```python
+```
 from django.urls import path, include
 from django.conf.urls import url
 ```
 
-and then change ..
+and then ensure `urlpatterns` list gets initialized like so: 
 
-```python
+```
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
@@ -233,6 +274,8 @@ So in the terminal execute:
 ```
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py migrate
 ```
+
+### QA Djano AllAuth 
 
 You should QA at this point by starting the django server like so:
 
@@ -306,11 +349,29 @@ INSTALLED_APPS = [
 ]
 ```
 
+The lines ...
+
+```
+    # added as per django-rest-auth docs.
+    # https://django-rest-auth.readthedocs.io/en/latest/installation.html
+    'rest_framework.authtoken',
+```
+
+... lines ...
+
+```
+    # added as per django-rest-auth docs.
+    # https://django-rest-auth.readthedocs.io/en/latest/installation.html
+    'rest_auth'
+```
+
+... were added.
+
 The django-rest-auth documentation also says we need to update the project's urls.py file.
 
 So in the urls.py file change ...
 
-```python
+```
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
@@ -319,7 +380,7 @@ urlpatterns = [
 
 ... to ...
 
-```python
+```
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
@@ -329,13 +390,24 @@ urlpatterns = [
 ]
 ```
 
-Then the documenation says we need to execute in the terminal this command:
+The line ...
 
-```bash
+```
+    url(r'^rest-auth/', include('rest_auth.urls'))
+```
+
+... was added.
+
+Then the documentation says we need to execute in the terminal this command:
+
+```
 python manage.py migrate
 ```
 
-## Enabling Github social authentication 
+## Enabling Github Social Authentication 
+
+In this tutorial we are only concerned with GitHub social authentication.
+At this point you should log on to your GitHub account.
 
 ### Register a new OAuth application with GitHub`
 
