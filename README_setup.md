@@ -393,3 +393,10 @@ You should see this:
 
 ![alt text](react_django_tut/docs/imgs/github_authorize_django_react_tut.png)
 
+Click the 'Authorize redcrick' button and you end up here:
+
+
+![alt text](react_django_tut/docs/imgs/accounts_profile_404_error.png)
+
+TODO: figure out how to fix the 404 error.
+
