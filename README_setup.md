@@ -36,7 +36,7 @@ So in the PyCharm terminal execute:
 
 You can QA at this point by executing:
 
-```python
+```
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut>cd react_django_tut
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py runserver
 Watching for file changes with StatReloader
