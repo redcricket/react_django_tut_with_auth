@@ -30,7 +30,7 @@ settings.py file.
 
 So in the PyCharm terminal execute:
 
-```bash
+```
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut>django-admin startproject react_django_tut
 ```
 
