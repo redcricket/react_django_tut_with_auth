@@ -21,4 +21,7 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
+    # added as per django-rest-auth docs.
+    # https://django-rest-auth.readthedocs.io/en/latest/installation.html
+    url(r'^rest-auth/', include('rest_auth.urls'))
 ]

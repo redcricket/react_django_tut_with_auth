@@ -399,6 +399,9 @@ Click the 'Authorize redcrick' button and you end up here:
 ![alt text](react_django_tut/docs/imgs/accounts_profile_404_error.png)
 
 TODO: figure out how to fix the 404 error.
+We get this 404 error because we have not set our `LOGIN_REDIRECT_URL` variable in our settings.py file yet.
+
+https://docs.djangoproject.com/en/2.2/ref/settings/#login-redirect-url
 
 You also check this url: localhost:8000/rest-auth/user/
 

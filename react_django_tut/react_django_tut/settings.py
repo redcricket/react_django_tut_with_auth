@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    # added as per django-rest-auth docs.
+    # https://django-rest-auth.readthedocs.io/en/latest/installation.html
+    'rest_framework.authtoken',
     # The following apps are required:
     'django.contrib.sites',
     'allauth',
@@ -45,6 +48,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     # ... include the providers you want to enable:
     'allauth.socialaccount.providers.github',
+    # added as per django-rest-auth docs.
+    # https://django-rest-auth.readthedocs.io/en/latest/installation.html
+    'rest_auth'
 ]
 
 SITE_ID = 1
@@ -138,3 +144,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# see https://docs.djangoproject.com/en/2.2/ref/settings/#login-redirect-url
+LOGIN_REDIRECT_URL = '/'
