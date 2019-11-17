@@ -444,7 +444,7 @@ The documentation is not very clear.  It states:
 So we need to be able to use the Django admin panel. Before we can do that we need to create a super user.
 So in the terminal execute:
 
-```bash
+```
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py createsuperuser
 ```
 
