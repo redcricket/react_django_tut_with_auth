@@ -351,12 +351,12 @@ On github we do this:
 https://github.com/settings/developers
 click on **'Register a new application'** button
 
-(see screen shots)
 ![alt text](react_django_tut/docs/imgs/github_settings_application.png)
  
 
 Once we register our app with git hub we get this web page: https://github.com/settings/applications/1171918
-**In that web you can see your Client ID and Client Secret.**
+**In that web you can see your Client ID and Client Secret.**  You will need these values when we add a Social
+Application record with the Django admin panel.
 
 ### Add Social Application in Django Admin Panel
 
@@ -369,30 +369,33 @@ The documentation is not very clear.  It states:
 
 > Add Social Application in django admin panel
 
-So we need to be able to use the django admin panel. Before we can do that we need to create a super user.
+So we need to be able to use the Django admin panel. Before we can do that we need to create a super user.
 So in the terminal execute:
 
 ```bash
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py createsuperuser
 ```
 
-Now in the admin panel nagivate to Admin > Sites panel to change `example.com` to `localhost`.
+Now in the admin panel nagivate to **Admin > Sites** panel to change `example.com` to `localhost`.
 
 ![alt text](react_django_tut/docs/imgs/admin_sites_change_example.com_to_localhost.png)
 
-Also in the Home › Social Accounts › Social applications:
+Then in the **Home › Social Accounts › Social applications** click [add](http://localhost:8000/admin/socialaccount/socialapp/add/)
 
-Now back in our app's admin panel we fill out: http://localhost:8000/admin/socialaccount/socialapp/add/
-create a social application called `django_react_tut_oauth_app`.  
+Create a social application called `django_react_tut_oauth_app`.  This has to match what we entered for our **Application
+Name** when registered our OAuth application with GitHub.  Fill out the form as shown below:
+
 ![alt text](react_django_tut/docs/imgs/admin_panel_create_social_application.png)
 
 
 ### QA Github Access
-Now we can QA our github access by going to:
+Now we can QA our github access by starting the Django server.  In terminal execute:
 
-http://localhost:8000/accounts/login/
+```
+(venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py runserver
+```
 
-and click the 'GitHub' link.
+Then going to http://localhost:8000/accounts/login/ and click the 'GitHub' link.
 
 You should see this:
 
@@ -403,7 +406,6 @@ Click the 'Authorize redcrick' button and you end up here:
 
 ![alt text](react_django_tut/docs/imgs/accounts_profile_404_error.png)
 
-TODO: figure out how to fix the 404 error.
 We get this 404 error because we have not set our `LOGIN_REDIRECT_URL` variable in our settings.py file yet.
 
 https://docs.djangoproject.com/en/2.2/ref/settings/#login-redirect-url
