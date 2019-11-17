@@ -337,34 +337,19 @@ python manage.py migrate
 
 ## Enabling Github social authentication 
 
-The documentation for this is here: 
+### Register a new OAuth application with GitHub`
 
-https://django-rest-auth.readthedocs.io/en/latest/installation.html#social-authentication-optional
-https://django-rest-auth.readthedocs.io/en/latest/installation.html#github
-
-The documentation is not very clear.  It states:
-
-> Add Social Application in django admin panel
-
-So we need to be able to use the django admin panel.
-Before we can do that we need to create a super user.
-So in the terminal execute:
-
-```bash
-(venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py createsuperuser
-```
-
-Then do ...
-
-also see:
-
-https://developer.github.com/v3/guides/basics-of-authentication/
+The documentation for doing this can be found here:
 https://developer.github.com/v3/guides/basics-of-authentication/#registering-your-app
+
+** VERY IMPORTANT SECURITY ISSUE **
+> Every registered OAuth application is assigned a unique Client ID and Client Secret. 
+> The Client Secret should not be shared! That includes checking the string into your repository.
 
 On github we do this: 
 
 https://github.com/settings/developers
-click on 'Register a new application' button
+click on **'Register a new application'** button
 
 (see screen shots)
 ![alt text](react_django_tut/docs/imgs/github_settings_application.png)
@@ -382,7 +367,25 @@ Now back in our app's admin panel we fill out: http://localhost:8000/admin/socia
 create a social application called `django_react_tut_oauth_app`.  
 ![alt text](react_django_tut/docs/imgs/admin_panel_create_social_application.png)
 
+### Add Social Application in Django Admin Panel
 
+The documentation for this is here: 
+
+https://django-rest-auth.readthedocs.io/en/latest/installation.html#social-authentication-optional
+https://django-rest-auth.readthedocs.io/en/latest/installation.html#github
+
+The documentation is not very clear.  It states:
+
+> Add Social Application in django admin panel
+
+So we need to be able to use the django admin panel. Before we can do that we need to create a super user.
+So in the terminal execute:
+
+```bash
+(venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py createsuperuser
+```
+
+### QA Github Access
 Now we can QA our github access by going to:
 
 http://localhost:8000/accounts/login/
