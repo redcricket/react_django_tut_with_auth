@@ -342,7 +342,7 @@ python manage.py migrate
 The documentation for doing this can be found here:
 https://developer.github.com/v3/guides/basics-of-authentication/#registering-your-app
 
-** VERY IMPORTANT SECURITY ISSUE **
+**VERY IMPORTANT SECURITY ISSUE**
 > Every registered OAuth application is assigned a unique Client ID and Client Secret. 
 > The Client Secret should not be shared! That includes checking the string into your repository.
 
@@ -353,19 +353,10 @@ click on **'Register a new application'** button
 
 (see screen shots)
 ![alt text](react_django_tut/docs/imgs/github_settings_application.png)
-
+ 
 
 Once we register our app with git hub we get this web page: https://github.com/settings/applications/1171918
-
-Now in the admin panel nagivate to Admin > Sites panel to change `example.com` to `localhost`.
-
-![alt text](react_django_tut/docs/imgs/admin_sites_change_example.com_to_localhost.png)
-
-Also in the Home › Social Accounts › Social applications:
-
-Now back in our app's admin panel we fill out: http://localhost:8000/admin/socialaccount/socialapp/add/
-create a social application called `django_react_tut_oauth_app`.  
-![alt text](react_django_tut/docs/imgs/admin_panel_create_social_application.png)
+**In that web you can see your Client ID and Client Secret.**
 
 ### Add Social Application in Django Admin Panel
 
@@ -384,6 +375,17 @@ So in the terminal execute:
 ```bash
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py createsuperuser
 ```
+
+Now in the admin panel nagivate to Admin > Sites panel to change `example.com` to `localhost`.
+
+![alt text](react_django_tut/docs/imgs/admin_sites_change_example.com_to_localhost.png)
+
+Also in the Home › Social Accounts › Social applications:
+
+Now back in our app's admin panel we fill out: http://localhost:8000/admin/socialaccount/socialapp/add/
+create a social application called `django_react_tut_oauth_app`.  
+![alt text](react_django_tut/docs/imgs/admin_panel_create_social_application.png)
+
 
 ### QA Github Access
 Now we can QA our github access by going to:
