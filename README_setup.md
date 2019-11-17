@@ -367,6 +367,8 @@ https://github.com/settings/developers
 click on 'Register a new application' button
 
 (see screen shots)
+![alt text](react_django_tut/docs/imgs/github_settings_application.png)
+
 
 Once we register our app with git hub we get this web page: https://github.com/settings/applications/1171918
 
@@ -379,3 +381,15 @@ Also in the Home › Social Accounts › Social applications:
 Now back in our app's admin panel we fill out: http://localhost:8000/admin/socialaccount/socialapp/add/
 create a social application called `django_react_tut_oauth_app`.  
 ![alt text](react_django_tut/docs/imgs/admin_panel_create_social_application.png)
+
+
+Now we can QA our github access by going to:
+
+http://localhost:8000/accounts/login/
+
+and click the 'GitHub' link.
+
+You should see this:
+
+![alt text](react_django_tut/docs/imgs/github_authorize_django_react_tut.png)
+
