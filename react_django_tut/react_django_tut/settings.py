@@ -27,7 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+# as per https://github.com/adamchainz/django-cors-headers#cors_origin_allow_all
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "http://127.0.0.1:8000",
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    # as per https://github.com/adamchainz/django-cors-headers#setup
+    'corsheaders',
     # added as per django-rest-auth docs.
     # https://django-rest-auth.readthedocs.io/en/latest/installation.html
     'rest_framework.authtoken',
@@ -63,6 +70,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # as per https://github.com/adamchainz/django-cors-headers#setup
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'react_django_tut.urls'
