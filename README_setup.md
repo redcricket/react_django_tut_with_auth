@@ -497,7 +497,9 @@ Given correct user name and password should result in this:
 
 ![alt text](react_django_tut/docs/imgs/rest-auth_success.png)
 
+**WARNING AT THIS POINT THE PASSWORD IS BEING PASSED UNENCRYPTED**
 
+This is just a QA step for setting up and in no way is production ready.
 
 
 # Deal With CORS
