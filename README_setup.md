@@ -514,4 +514,4 @@ At this point we are ready to create our front end of the application.
 This subject is well covered here: https://reactjs.org/
 We will be using a new git repo and WebThing IDE https://www.jetbrains.com/webstorm/download/download-thanks.html
 
-Please see https://github.com/redcricket/react_django_tut_with_auth_fe for the React part of this tutorial.
+Please see https://github.com/redcricket/react-router-auth the React part of this tutorial.
