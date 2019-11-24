@@ -489,3 +489,29 @@ You should see something like:
 ![alt text](react_django_tut/docs/imgs/rest-auth_user.png)
 
 
+Let's show that we can login with a existing account.
+
+![alt text](react_django_tut/docs/imgs/rest-auth_login.png)
+
+Given correct user name and password should result in this:
+
+![alt text](react_django_tut/docs/imgs/rest-auth_success.png)
+
+
+
+
+# Deal With CORS
+
+Install https://github.com/adamchainz/django-cors-headers
+
+
+# React Front End
+
+At this point we are ready to create our front end of the application.
+
+## Install React
+
+This subject is well covered here: https://reactjs.org/
+We will be using a new git repo and WebThing IDE https://www.jetbrains.com/webstorm/download/download-thanks.html
+
+Please see https://github.com/redcricket/react_django_tut_with_auth_fe for the React part of this tutorial.
