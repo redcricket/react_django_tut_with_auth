@@ -29,10 +29,34 @@ ALLOWED_HOSTS = []
 
 # as per https://github.com/adamchainz/django-cors-headers#cors_origin_allow_all
 CORS_ORIGIN_ALLOW_ALL = True
+#CORS_ORIGIN_WHITELIST = [
+#    'http://*',
+#    "http://localhost:3000*",
+#    "http://localhost:8000*",
+#    "http://127.0.0.1:3000*",
+#    "http://127.0.0.1:8000*",
+#]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]
+
+CORS_ORIGIN_REGEX_WHITELIST = [
     "http://localhost:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:3000",
     "http://127.0.0.1:8000",
 ]
+
+old_CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:8000",
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -75,6 +99,13 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 ROOT_URLCONF = 'react_django_tut.urls'
 
 TEMPLATES = [
