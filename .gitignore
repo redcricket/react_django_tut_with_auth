@@ -1,2 +1,4 @@
-./idea*
-./venv*
+venv*
+.idea*
+env*
+react_django_tut/db.sqlite3
