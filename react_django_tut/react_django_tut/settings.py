@@ -28,33 +28,12 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # as per https://github.com/adamchainz/django-cors-headers#cors_origin_allow_all
-CORS_ORIGIN_ALLOW_ALL = True
-#CORS_ORIGIN_WHITELIST = [
-#    'http://*',
-#    "http://localhost:3000*",
-#    "http://localhost:8000*",
-#    "http://127.0.0.1:3000*",
-#    "http://127.0.0.1:8000*",
-#]
-
-CORS_ORIGIN_ALLOW_ALL = True
+# If you don't set up CORS here you will get errors like:
+# Access to XMLHttpRequest at 'http://localhost:8000/rest-auth/login/' from origin 'http://localhost:3000'
+# has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
-]
-
-CORS_ORIGIN_REGEX_WHITELIST = [
-    "http://localhost:3000",
-    "http://localhost:8000",
-    "http://127.0.0.1:3000",
-    "http://127.0.0.1:8000",
-]
-
-old_CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-    "http://localhost:8000",
-    "http://127.0.0.1:3000",
-    "http://127.0.0.1:8000",
 ]
 
 # Application definition
