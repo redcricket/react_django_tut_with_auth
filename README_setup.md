@@ -517,3 +517,14 @@ This subject is well covered here: https://reactjs.org/
 We will be using a new git repo and WebThing IDE https://www.jetbrains.com/webstorm/download/download-thanks.html
 
 Please see https://github.com/redcricket/react-router-auth the React part of this tutorial.
+
+
+# Getting Signup to work.
+
+I have been banging my head against the wrong wall.  I have been trying to get the allauth URL accounts/signup to work.
+It really didn't work very well at all.  I discovered that I probably should have been using
+rest-auth/registration to "Signup" new users.
+
+So I am following instructions from:
+https://django-rest-auth.readthedocs.io/en/latest/installation.html#registration-optional
+
