@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 # has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
+    'http://localhost:3000', 'http://127.0.0.1:3000'
 ]
 
 # Application definition
@@ -60,16 +60,19 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.github',
     # added as per django-rest-auth docs.
     # https://django-rest-auth.readthedocs.io/en/latest/installation.html
-    'rest_auth'
+    'rest_auth',
+    # https://django-rest-auth.readthedocs.io/en/latest/installation.html#registration-optional
+    'rest_auth.registration',
 ]
 
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -171,4 +174,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # see https://docs.djangoproject.com/en/2.2/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = '/'
+# LOGIN_REDIRECT_URL = '/'
+# LOGIN_REDIRECT_URL = 'http://localhost:3000/products/2'
+LOGIN_REDIRECT_URL = '/products/2'
+
+# Try this inorder to get signup working
+#ACCOUNT_SIGNUP_FORM_CLASS = None
+#ACCOUNT_FORMS = { 'signup': None }
