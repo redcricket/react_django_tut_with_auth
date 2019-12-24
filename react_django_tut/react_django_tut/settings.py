@@ -178,6 +178,8 @@ STATIC_URL = '/static/'
 # LOGIN_REDIRECT_URL = 'http://localhost:3000/products/2'
 LOGIN_REDIRECT_URL = '/products/2'
 
-# Try this inorder to get signup working
-#ACCOUNT_SIGNUP_FORM_CLASS = None
-#ACCOUNT_FORMS = { 'signup': None }
+# this fixes the
+# ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+# error we have been getting.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
