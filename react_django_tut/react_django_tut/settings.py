@@ -183,3 +183,6 @@ LOGIN_REDIRECT_URL = '/products/2'
 # error we have been getting.
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# Let's try this out
+# see https://django-allauth.readthedocs.io/en/latest/configuration.html
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True

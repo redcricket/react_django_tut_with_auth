@@ -528,3 +528,40 @@ rest-auth/registration to "Signup" new users.
 So I am following instructions from:
 https://django-rest-auth.readthedocs.io/en/latest/installation.html#registration-optional
 
+
+## Getting email verification to work
+
+look here:
+
+https://github.com/Tivix/django-rest-auth/issues/15
+https://github.com/Tivix/django-rest-auth/issues/20
+
+The comments in `rest_auth/registration/urls.py` says  
+
+> urlpatterns = [
+>     url(r'^$', RegisterView.as_view(), name='rest_register'),
+>     url(r'^verify-email/$', VerifyEmailView.as_view(), name='rest_verify_email'),
+> 
+>     # This url is used by django-allauth and empty TemplateView is
+>     # defined just to allow reverse() call inside app, for example when email
+>     # with verification link is being sent, then it's required to render email
+>     # content.
+> 
+>     # account_confirm_email - You should override this view to handle it in
+>     # your API client somehow and then, send post to /verify-email/ endpoint
+>     # with proper key.
+>     # If you don't want to use API on that step, then just use ConfirmEmailView
+>     # view from:
+>     # django-allauth https://github.com/pennersr/django-allauth/blob/master/allauth/account/views.py
+>     url(r'^account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(),
+>         name='account_confirm_email'),
+> ]
+
+so I created a new app like so:
+
+```
+(venv) C:\Users\plankton\PycharmProjects\react_django_tut>cd react_django_tut
+
+(venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py startapp confirm_email
+
+```
