@@ -27,5 +27,9 @@ urlpatterns = [
     # https://django-rest-auth.readthedocs.io/en/latest/installation.html
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
-    url(r'^$', swagger_view)
+    url(r'^$', swagger_view),
 ]
+
+'''
+   url(r'^account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(), name='account_confirm_email'),
+'''
