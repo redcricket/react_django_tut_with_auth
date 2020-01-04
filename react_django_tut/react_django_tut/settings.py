@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_swagger',
     # as per https://github.com/adamchainz/django-cors-headers#setup
     'corsheaders',
     # added as per django-rest-auth docs.
@@ -81,6 +82,8 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+#REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
@@ -91,8 +94,13 @@ REST_FRAMEWORK = {
     # which now gets 401 unauthorized
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
-    )
+    ),
+    # 'DEFAULT_SCHEMA_CLASS': ( 'rest_framework.schemas.coreapi.AutoSchema', )
+    'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapi.AutoSchema'
 }
+
+# REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.coreapi.AutoSchema' }
+
 ROOT_URLCONF = 'react_django_tut.urls'
 
 TEMPLATES = [

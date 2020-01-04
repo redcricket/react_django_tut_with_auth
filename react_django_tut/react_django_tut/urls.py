@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
+from rest_framework_swagger.views import get_swagger_view
 
+swagger_view = get_swagger_view(title='Swagger')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,5 +26,10 @@ urlpatterns = [
     # added as per django-rest-auth docs.
     # https://django-rest-auth.readthedocs.io/en/latest/installation.html
     url(r'^rest-auth/', include('rest_auth.urls')),
-    url(r'^rest-auth/registration/', include('rest_auth.registration.urls'))
+    url(r'^rest-auth/registration/', include('rest_auth.registration.urls')),
+    url(r'^$', swagger_view),
 ]
+
+'''
+   url(r'^account-confirm-email/(?P<key>[-:\w]+)/$', TemplateView.as_view(), name='account_confirm_email'),
+'''

@@ -565,3 +565,32 @@ so I created a new app like so:
 (venv) C:\Users\plankton\PycharmProjects\react_django_tut\react_django_tut>python manage.py startapp confirm_email
 
 ```
+
+Also see https://stackoverflow.com/questions/28412226/how-to-change-the-email-verification-link-in-allauth#28412447
+
+I had to edit:
+
+```
+~/PycharmProjects/react_django_tut/venv/Lib/site-packages/allauth/account/adapter.py
+```
+
+I changed ____ to ....
+
+```
+    def get_email_confirmation_url(self, request, emailconfirmation):
+        """Constructs the email confirmation (activation) url.
+
+        Note that if you have architected your system such that email
+        confirmations are sent outside of the request context `request`
+        can be `None` here.
+        """
+        #RBC url = reverse(
+        #RBC     "account_confirm_email",
+        #RBC     args=[emailconfirmation.key])
+        url = f'http://localhost:3000/confirm-email/{emailconfirmation.key}/'
+        # RBC ret = build_absolute_uri(
+        # RBC    request,
+        # RBC    url)
+        # RBC return ret
+        return url
+```
